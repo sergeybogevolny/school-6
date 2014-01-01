@@ -334,3 +334,7 @@ border:1px solid #15aeec; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
     color: #17502E;
     border: 1px solid #ccc;
 }
+.error_message p{
+    padding: 0px;
+    margin: 0px;
+}

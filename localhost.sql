@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 01, 2014 at 04:11 PM
+-- Generation Time: Jan 01, 2014 at 06:33 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -41,15 +41,15 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `name`) VALUES
-(1, 'admin', '1fe045f854d363637dc3d73bc523f3df', '');
+(1, 'admin', '24314bc2d7ec153c0f40a00559919c87', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `item`
+-- Table structure for table `inventory`
 --
 
-CREATE TABLE IF NOT EXISTS `item` (
+CREATE TABLE IF NOT EXISTS `inventory` (
   `item_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(150) NOT NULL,
   `description` text NOT NULL,
@@ -57,7 +57,15 @@ CREATE TABLE IF NOT EXISTS `item` (
   `image` varchar(255) NOT NULL,
   `stock` int(11) NOT NULL,
   PRIMARY KEY (`item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `inventory`
+--
+
+INSERT INTO `inventory` (`item_id`, `title`, `description`, `price`, `image`, `stock`) VALUES
+(1, 'The Games people play', 'Games People Play: The Psychology of Human Relationships is a bestselling 1964 book by psychiatrist Eric Berne. Since its publication it has sold more than five million copies', 100, '/assets/uploads/books/1388597217.jpg', 5),
+(2, 'Transactional Analysis in Psychotherapy by Eric Berne (the Author of Games People Play)', 'Transactional Analysis in Psychotherapy by Eric Berne "An important book . . . a brilliant, amusing, and clear catalogue of the psychological theatricals that human beings play over and over again."\nDr. Eric Berne, as the originator of transactional analysis, has attained recognition for developing one of the most innovative approaches to modern psychotherapy. Discover how many of these "secret games" you play everyday of your life: Iwfy (If it weren''t for you); Sweetheart; Threadbare; Harried; Alcoholic, and many more. A groundbreaking book that bores deep into the heart of all our relationships.', 180, '/assets/uploads/books/1388597426.jpeg', 10);
 
 -- --------------------------------------------------------
 

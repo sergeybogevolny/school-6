@@ -94,9 +94,67 @@ class admin extends CI_Controller {
 	public function addInventory()
 	{
 		$this->isLoggedIn();
+		$this->load->helper(array('form'));
 
-		$data = array();
+		switch ((int) $this->input->get('action')) {
+			case 1:
+				$data['error'] = 'All fields are required!';
+				break;
+			case 2:
+				$data['error'] = false;
+				$data['success'] = 'Item added to inventory';
+				break;
+			default:
+				$data['success'] = false;
+				$data['error'] = false;
+				break;
+		}
 		$this->load->view('admin/addInventory.php', $data);
+	}
+
+	public function processAddInventory()
+	{
+		$this->isLoggedIn();
+		$itemData = $this->input->post();
+		if(empty($itemData['title']) || empty($itemData['description']) || empty($itemData['price'])){
+			redirect('/admin/addInventory?action=1');
+		}
+
+		$config['upload_path'] = './assets/uploads/books/';
+		$config['allowed_types'] = 'gif|jpg|jpeg|png';
+		$config['max_size']	= '2048';
+		$config['max_width']  = '1024';
+		$config['max_height']  = '768';
+		$ext = end(explode(".", $_FILES['userfile']['name']));
+		$config['file_name'] = time().'.'.$ext;
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$error = array('error' => $this->upload->display_errors());
+			$this->load->helper(array('form'));
+			$this->load->view('admin/addInventory.php', $error);
+		}
+		else
+		{
+			$image = $this->upload->data();
+			if(!file_exists('./assets/uploads/books/'.$image['file_name'])){
+				$error = array('error' => 'upload faild please try again.');
+				$this->load->helper(array('form'));
+				$this->load->view('admin/addInventory.php', $error);
+			}
+			$data = array(
+					'image' => '/assets/uploads/books/'.$image['file_name'],
+					'title' => $itemData['title'],
+					'description' => $itemData['description'],
+					'price' => number_format((float) $itemData['price'], 2, '.', ''),
+					'stock' => (int) $itemData['stock']
+				);
+			$this->admin_model->AddToInventory($data);
+			redirect('/admin/addInventory?action=2');
+		}
+
 	}
 
 

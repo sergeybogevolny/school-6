@@ -6,8 +6,12 @@
 <div class="error_message"><?php echo $error; ?></div>
 <?php } ?>
 
+<?php if(!empty($success)) { ?>
+<div class="success_message"><?php echo $success; ?></div>
+<?php } ?>
+
 <div class="">
-	<form action="<?php echo link_url(); ?>admin/processChangePassword" method="POST">
+	<?php echo form_open_multipart('admin/processAddInventory');?>
 
 		<label for="title">Item Title :</label><br/>
 		<input type="text" name="title" id="title"/>
@@ -22,7 +26,7 @@
 		<br/>
 		<br/>
 		<label for="stock">Units in stock:</label><br/>
-		<select>
+		<select name="stock" id="stock">
 			<option value="0">Out of stock</option>
 			<?php for ($i=1; $i < 501 ; $i++) { ?>
 				<option><?php echo $i; ?></option>
@@ -30,8 +34,8 @@
 		</select>
 		<br/>
 		<br/>
-		<label for="image">Upload image :</label><br/>
-		<input type="file" name="image" id="image" />
+		<label for="image">Upload image (max size 2mb, 1024x768 px):</label><br/>
+		<input type="file" name="userfile" id="image" />
 		<br/>
 		<br/>
 		<input type="submit" value="Save" />

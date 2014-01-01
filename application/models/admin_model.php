@@ -62,4 +62,11 @@ class Admin_model extends CI_Model {
         return true;
     }
 
+    public function AddToInventory($data)
+    {
+        $this->load->database();
+        $this->db->insert('inventory', $data);
+        return $this->db->insert_id();
+    }
+
 }
