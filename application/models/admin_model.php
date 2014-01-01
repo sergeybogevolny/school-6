@@ -62,11 +62,24 @@ class Admin_model extends CI_Model {
         return true;
     }
 
-    public function AddToInventory($data)
+    public function addToInventory($data)
     {
         $this->load->database();
         $this->db->insert('inventory', $data);
         return $this->db->insert_id();
+    }
+
+    public function getInventory()
+    {
+        $this->load->database();
+        $sql = "SELECT * FROM inventory";
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows() > 0){
+           return $query->result();
+        } else {
+            return false;
+        } 
     }
 
 }

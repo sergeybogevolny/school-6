@@ -1,6 +1,6 @@
 <?php $this->load->view('template/admin_header.php'); ?>
 
-<h3>Add Goods</h3>
+<h3>Add Books</h3>
 
 <?php if(!empty($error)) { ?>
 <div class="error_message"><?php echo $error; ?></div>
@@ -30,6 +30,14 @@
 			<option value="0">Out of stock</option>
 			<?php for ($i=1; $i < 501 ; $i++) { ?>
 				<option><?php echo $i; ?></option>
+			<?php } ?>
+		</select>
+		<br/>
+		<br/>
+		<label for="category">Category:</label><br/>
+		<select name="category" id="category">
+			<?php foreach (getBookCategories() as $categoryId => $category) { ?>
+				<option value="<?php  echo $categoryId ; ?>"><?php echo $category; ?></option>
 			<?php } ?>
 		</select>
 		<br/>

@@ -17,3 +17,22 @@ function pre($item, $exit=false){
 	}
 }
 
+function getBookCategories($id=false)
+{
+	$categories = array(
+		'1'=> 'Academic and Professional',
+		'2'=> 'Biographies & Autobiographies',
+		'3'=> 'Business, Investing and Management',
+		'4'=> 'Children',
+		'5'=> 'College Text & Reference',
+		'6'=> 'History and Politics',
+		'7'=> 'Literature & Fiction'
+	);
+
+	if($id){
+		return $categories[$id];
+	} else {
+		return $categories;
+	}
+}
+

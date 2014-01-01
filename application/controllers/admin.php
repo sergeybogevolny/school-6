@@ -85,9 +85,7 @@ class admin extends CI_Controller {
 	public function inventory()
 	{
 		$this->isLoggedIn();
-
-
-		$data = array();
+		$data['inventory'] = $this->admin_model->getInventory();
 		$this->load->view('admin/inventory.php', $data);
 	}
 
@@ -145,13 +143,14 @@ class admin extends CI_Controller {
 				$this->load->view('admin/addInventory.php', $error);
 			}
 			$data = array(
-					'image' => '/assets/uploads/books/'.$image['file_name'],
+					'image' => 'assets/uploads/books/'.$image['file_name'],
 					'title' => $itemData['title'],
 					'description' => $itemData['description'],
 					'price' => number_format((float) $itemData['price'], 2, '.', ''),
-					'stock' => (int) $itemData['stock']
+					'stock' => (int) $itemData['stock'],
+					'category' => (int) $itemData['category']
 				);
-			$this->admin_model->AddToInventory($data);
+			$this->admin_model->addToInventory($data);
 			redirect('/admin/addInventory?action=2');
 		}
 
