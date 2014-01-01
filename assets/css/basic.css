@@ -338,3 +338,17 @@ border:1px solid #15aeec; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
     padding: 0px;
     margin: 0px;
 }
+
+.instock{
+    color: #3BB640;
+    font-weight: normal;
+    display: inline-block;
+    padding-right: 5px;
+}
+
+.outOfstock{
+    color: #CA0D3A;
+    font-weight: bold;
+    display: inline-block;
+    padding-right: 5px;
+}
