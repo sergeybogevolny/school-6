@@ -6,6 +6,11 @@
 <div class="error_message"><?php echo $error; ?></div>
 <?php } ?>
 
+<?php if(!empty($success)) { ?>
+<div class="success_message"><?php echo $success; ?></div>
+<?php } ?>
+
+
 <div class="">
 	<form action="<?php echo link_url(); ?>admin/processChangePassword" method="POST">
 

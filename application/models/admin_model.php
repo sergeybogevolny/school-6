@@ -49,4 +49,17 @@ class Admin_model extends CI_Model {
     	return md5($rawPassword.$salt);
     }
 
+    public function changePassword($adminId, $newPassword)
+    {
+        $this->load->database();
+
+        $data = array(
+               'password' => $newPassword
+            );
+
+        $this->db->where('id', $adminId);
+        $this->db->update('admin', $data); 
+        return true;
+    }
+
 }

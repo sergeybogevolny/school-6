@@ -103,16 +103,59 @@ class admin extends CI_Controller {
 	public function changePassword()
 	{
 		$this->isLoggedIn();
-
-
-		$data = array();
+		switch ((int) $this->input->get('action')) {
+			case 1:
+				$data['error'] = 'All fields are required!';
+				break;
+			case 2:
+				$data['error'] = 'Wrong old password!';
+				break;
+			case 3:
+				$data['error'] = 'New password and confirm password do not match!';
+				break;
+			case 4:
+				$data['error'] = 'Minimum 4 character are required';
+				break;
+			case 5:
+				$data['error'] = false;
+				$data['success'] = 'New password saved.';
+				break;
+			default:
+				$data['success'] = false;
+				$data['error'] = false;
+				break;
+		}
 		$this->load->view('admin/changePassword.php', $data);
 	}
 
 	public function processChangePassword()
 	{
 		$this->isLoggedIn();
+		$newOathData = $this->input->post();
 
+		if(empty($newOathData['oldpassword']) || empty($newOathData['password']) || empty($newOathData['confirmPassword'])){
+			redirect('/admin/changePassword?action=1');
+		}
+
+		$adminId = $this->session->userdata('adminId');
+		$adminData = $this->admin_model->getAdminById($adminId);
+
+		if($this->admin_model->hashPassword($newOathData['oldpassword']) != $adminData->password){
+			redirect('/admin/changePassword?action=2');
+		}
+
+		if($newOathData['password'] != $newOathData['confirmPassword']){
+			redirect('/admin/changePassword?action=3');
+		}
+
+		if(strlen($newOathData['password']) < 4 ){
+			redirect('/admin/changePassword?action=4');
+		}
+
+		$newPassword = $this->admin_model->hashPassword($newOathData['password']);
+		$this->admin_model->changePassword($adminId, $newPassword);
+
+		redirect('/admin/changePassword?action=5');
 	}
 
 	public function logout()

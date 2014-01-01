@@ -326,3 +326,11 @@ border:1px solid #15aeec; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
 .floatRight{
     float: right;
 }
+
+.success_message{
+    padding: 7px;
+    background-color: #C9FCD1;
+    margin-bottom: 15px;
+    color: #17502E;
+    border: 1px solid #ccc;
+}
