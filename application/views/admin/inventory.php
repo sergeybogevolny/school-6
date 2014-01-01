@@ -1,8 +1,10 @@
 <?php $this->load->view('template/admin_header.php'); ?>
 
 
-<h3>Manage Inventory</h3>
+<h3 class="floatLeft">Manage Inventory</h3>
 
+<a href="<?php echo link_url(); ?>admin/addInventory" class="addInventoryBtn floatRight" >Add Goods</a>
+<div class="clear"></div>
 
 <table class="cart_table order_table">
 	

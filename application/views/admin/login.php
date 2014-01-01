@@ -1,9 +1,13 @@
 <?php $this->load->view('template/header.php'); ?>
 
 
-<?php if($error) { ?>
+<h3>Edit Profile</h3>
+
+<?php if(!empty($error)) { ?>
 <div class="error_message"><?php echo $error; ?></div>
 <?php } ?>
+
+
 <div class="">
 	<form action="<?php echo link_url(); ?>admin/login" method="POST">
 		<label for="username">Username :</label><br/>

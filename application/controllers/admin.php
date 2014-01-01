@@ -77,7 +77,7 @@ class admin extends CI_Controller {
 		$this->isLoggedIn();
 
 
-		$data = array('adminName' => $this->session->userdata('username'));
+		$data = array();
 		$this->load->view('admin/orders.php', $data);
 	}
 
@@ -87,30 +87,38 @@ class admin extends CI_Controller {
 		$this->isLoggedIn();
 
 
-		$data = array('adminName' => $this->session->userdata('username'));
+		$data = array();
 		$this->load->view('admin/inventory.php', $data);
 	}
 
+	public function addInventory()
+	{
+		$this->isLoggedIn();
 
-	public function profile()
+		$data = array();
+		$this->load->view('admin/addInventory.php', $data);
+	}
+
+
+	public function changePassword()
 	{
 		$this->isLoggedIn();
 
 
-		$data = array('adminName' => $this->session->userdata('username'));
-		$this->load->view('admin/home.php', $data);
+		$data = array();
+		$this->load->view('admin/changePassword.php', $data);
+	}
+
+	public function processChangePassword()
+	{
+		$this->isLoggedIn();
+
 	}
 
 	public function logout()
 	{
-		$this->isLoggedIn();
-
-
-
-		$data = array('adminName' => $this->session->userdata('username'));
-		$this->load->view('admin/home.php', $data);
+		$this->session->sess_destroy();
+		redirect();
 	}
-
-
 }
 
