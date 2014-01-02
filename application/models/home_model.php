@@ -27,7 +27,24 @@ class Home_model extends CI_Model {
     public function getBooks($filters)
     {
         $this->load->database();
-        $sql = "SELECT * FROM inventory ";
+
+        if(!empty($filters['search'])){
+            $search = $this->db->escape_like_str($filters['search']);
+            $where[] = " (`title` LIKE '%{$search}%' OR `description` LIKE '%{$search}%' ) ";
+        }
+
+        if(!empty($filters['category'])){
+            $categoryId = $this->db->escape($filters['category']);
+            $where[] = " `category` = {$categoryId} ";
+        }
+
+        if(!empty($where)){
+            $where = ' WHERE '. implode(' AND ', $where);
+        } else {
+            $where = '';
+        }
+
+        $sql = "SELECT * FROM inventory " . $where;
             $query = $this->db->query($sql);
             if ($query->num_rows() > 0){
                return $query->result();

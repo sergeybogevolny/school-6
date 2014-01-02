@@ -352,3 +352,22 @@ border:1px solid #15aeec; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
     display: inline-block;
     padding-right: 5px;
 }
+
+.redFont{
+    color: red;
+}
+
+input[type="text"], input[type="password"], textarea{
+    width: 250px;
+    border: 1px dotted #999;
+}
+
+label {
+
+    margin-top: 10px;
+    display: inline-block;
+}
+
+input[type="submit"]{
+    margin-top: 10px;
+}

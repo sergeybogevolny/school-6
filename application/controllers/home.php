@@ -7,7 +7,7 @@ class Home extends CI_Controller {
 	{
 		$this->load->model("home_model");
 		$data['list'] = $this->home_model->getHomeList();
-		$this->load->view('home', $data);
+		$this->load->view('home/home', $data);
 	}
 
 	public function search()
@@ -15,7 +15,7 @@ class Home extends CI_Controller {
 		$this->load->model("home_model");
 		$filters = $this->input->get();
 		$data['list'] = $this->home_model->getBooks($filters);
-		$this->load->view('search', $data);
+		$this->load->view('home/search', $data);
 	}
 
 

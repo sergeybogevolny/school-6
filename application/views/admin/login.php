@@ -1,7 +1,7 @@
 <?php $this->load->view('template/header.php'); ?>
 
 
-<h3>Edit Profile</h3>
+<h3>Admin login</h3>
 
 <?php if(!empty($error)) { ?>
 <div class="error_message"><?php echo $error; ?></div>

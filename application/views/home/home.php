@@ -20,18 +20,23 @@
 
 
 
-<?php 
-if(!empty($list)){ 
-	$y =0;
-	foreach ($list as $item) { 
-		$y++;
-		if(!($y%4)){ 
-?>
-			<div class="books_wrapper">
-		<?php } ?>
 
-		
+<?php if(!empty($list)){ ?>
 
+	<?php foreach ($list as $categoryId => $categoryList) { ?>
+
+		<div class="books_wrapper">
+
+			<div class="book_categorie_name">
+				<h2><?php echo getBookCategories($categoryId); ?></h2> 
+				<span class="book_cat_all"><a href="<?php echo link_url(). "home/search?category=".$categoryId; ?>">View all</a></span> 
+				<div class="clear"></div>
+			</div>
+
+
+
+
+			<?php foreach ($categoryList as $item) { ?>
 
 				<div class="book">
 					<div class="book_img_wrapper">
@@ -49,7 +54,7 @@ if(!empty($list)){
 					<span class="book_links">
 						<?php if($item->stock > 0){ ?>
 							<span class='instock'>In stock</span>
-							<a href="<?php echo base_url(). 'add_to_cart.php?book_id=10'; ?>">Add to cart</a>
+							<a href="<?php echo link_url(). 'cart/addToCart?id='.$item->item_id; ?>">Add to cart</a>
 						<?php } else { ?>
 								<span class='outOfstock'>Out of Stock</span>
 						<?php } ?>
@@ -58,11 +63,19 @@ if(!empty($list)){
 					<div class="clear"></div>
 				</div>
 
-		<?php if(!($y%4)){ ?>
-			<div class="clear"></div>
-			</div>
-		<?php } ?>
+			<?php } ?>
+
+
+		<div class="clear"></div>
+		</div>
+
+
 	<?php } ?>
 <?php } ?>
+
+
+
+
+
 
 <?php $this->load->view('template/footer.php'); ?>
