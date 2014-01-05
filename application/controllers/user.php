@@ -68,12 +68,11 @@ class User extends CI_Controller {
 		$password = $this->user_model->hashPassword($OathParams['password']);
 		$user = $this->user_model->getUserByUsername($OathParams['username']);
 
-		if( (!empty($user)) && $user->password == $password){
+		if( (!empty($user->username)) && $user->password == $password){
 			# success
 			$userSessionData = array(
-			                   'userId'  => $user->id,
-			                   'username'  => $user->username,
-			                   'userLoggedIn' => TRUE
+			                   'userId'  => $user->user_id,
+			                   'username'  => $user->username
 			               );
 			$this->session->set_userdata($userSessionData);
 
@@ -121,8 +120,7 @@ class User extends CI_Controller {
 
 		$userSessionData = array(
 			                   'userId'  => $user->id,
-			                   'username'  => $user->username,
-			                   'userLoggedIn' => TRUE
+			                   'username'  => $user->username
 			               );
 		$this->session->set_userdata($userSessionData);
 
@@ -135,10 +133,6 @@ class User extends CI_Controller {
 		}
 	}
 
-
-
-
-	
 
 	public function isUserLoggedIn()
 	{

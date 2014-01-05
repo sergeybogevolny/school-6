@@ -1,4 +1,4 @@
-<?php $this->load->view('template/header.php'); ?>
+<?php $this->load->view('template/admin_header.php'); ?>
 
 
 <h3>Admin login</h3>

@@ -49,7 +49,7 @@ if(!empty($list)){
 					<span class="book_links">
 						<?php if($item->stock > 0){ ?>
 							<span class='instock'>In stock</span>
-							<a href="<?php echo base_url(). 'add_to_cart.php?book_id=10'; ?>">Add to cart</a>
+							<a href="<?php echo link_url(). 'cart/addToCart?id='.$item->item_id; ?>">Add to cart</a>
 						<?php } else { ?>
 								<span class='outOfstock'>Out of Stock</span>
 						<?php } ?>

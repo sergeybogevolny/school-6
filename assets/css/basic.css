@@ -373,9 +373,22 @@ input[type="submit"]{
 }
 
 .cart_count {
-    width: 10px !important;
+    width: 20px !important;
 }
 
 .float_right {
     float: right;
+}
+
+.Address_1 {
+    float: left;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+.Address_2 {
+    float: left;
+    padding-left: 200px;
+    margin-bottom: 15px;
+    font-size: 13px;
 }

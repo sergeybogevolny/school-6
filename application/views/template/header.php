@@ -10,7 +10,7 @@
 <div class="wrapper">
 	
 	<div class="header_wrapper">
-		<div class="title_box"><h1>Books Online</h1></div>
+		<div class="title_box"><h1>Online Book Shop</h1></div>
 		<div class="session_box">
 			<div class="cart" title="Items in shopping cart"><img class="cart_img" src="<?php echo asset_url(), 'img/cart_icon.png'; ?>" />2</div>
 		</div>

@@ -28,6 +28,7 @@ class admin extends CI_Controller {
 				$data['error'] = false;
 				break;
 		}
+		$data['hideMenu'] = true;
 		$this->load->view('admin/login.php',$data);
 	}
 
@@ -59,7 +60,7 @@ class admin extends CI_Controller {
 
 	public function isLoggedIn()
 	{
-		if($this->session->userdata('adminId') == false && $this->session->userdata('adminLoggedIn') == false){
+		if($this->session->userdata('adminId') == false){
 			redirect('/admin?action=3');
 		}
 		return true;
