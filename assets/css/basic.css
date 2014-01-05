@@ -392,3 +392,7 @@ input[type="submit"]{
     margin-bottom: 15px;
     font-size: 13px;
 }
+.innerTable tr td {
+    border: 0px;
+
+}

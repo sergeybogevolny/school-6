@@ -1,4 +1,4 @@
-<?php $this->load->view('template/admin_header.php'); ?>
+<?php $this->load->view('template/header.php'); ?>
 
 
 <h3>Manage Orders</h3>
@@ -43,14 +43,7 @@
 		Email: <?php echo $order->email; ?>
 	</td>
 	<td align="center" >Rs. <?php echo $orderValue; ?></td>
-	<td align="center" >
-		<select onchange="changeOrderStatus(this, <?php echo $order->order_id; ?>);">
-			<?php foreach (getOrderStatus() as $statusId => $status) { ?>
-				<?php $selected = getOrderStatus($statusId) == $order->status ? 'selected="selected"' : ''; ?>
-				<option <?php echo $selected; ?> value="<?php echo $statusId; ?>"><?php echo $status; ?></option>
-			<?php } ?>
-		</select>
-	</td>
+	<td align="center" ><?php echo $order->status ; ?></td>
 </tr>
 <?php } ?>
 

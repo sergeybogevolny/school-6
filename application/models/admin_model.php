@@ -82,4 +82,30 @@ class Admin_model extends CI_Model {
         } 
     }
 
+    public function getOrders()
+    {
+        $this->load->database();
+        $sql = "SELECT * FROM `order` JOIN `user` ON (`user`.`user_id` = `order`.`user_id` ) ORDER BY order_id DESC";
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows() > 0){
+            $orders = $query->result();
+            foreach ($orders as $key => $value) {
+                $query = $this->db->query("SELECT * FROM `order_item` JOIN `inventory` ON (order_item.item_id = inventory.item_id) WHERE order_id = '{$value->order_id}' ");
+                $orders[$key]->items = $query->result();
+            }
+            return $orders;
+        } else {
+            return false;
+        } 
+    }
+
+    public function updateOrderStatus($orderId, $status)
+    {
+        $this->load->database();
+        $data = array('status' => getOrderStatus($status));
+        $this->db->where('order_id', $orderId);
+        $this->db->update('order', $data);
+    }
+
 }

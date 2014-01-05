@@ -76,9 +76,7 @@ class admin extends CI_Controller {
 	public function orders()
 	{
 		$this->isLoggedIn();
-
-
-		$data = array();
+		$data['orders'] = $this->admin_model->getOrders();
 		$this->load->view('admin/orders.php', $data);
 	}
 
@@ -220,6 +218,15 @@ class admin extends CI_Controller {
 	{
 		$this->session->sess_destroy();
 		redirect();
+	}
+
+	public function changeOrderStatus()
+	{
+		$orderId = (int) $this->input->post('order_id');
+		$status = (int) $this->input->post('order_status');
+
+		$this->admin_model->updateOrderStatus($orderId, $status);
+		exit(json_encode(array('status' => 'ok')));
 	}
 }
 

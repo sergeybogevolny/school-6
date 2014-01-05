@@ -80,7 +80,7 @@ class User extends CI_Controller {
 				$this->session->set_userdata('goTo', false);
 				redirect($goto);
 			}else {
-				redirect('/user/home?action=2');
+				redirect('/user/orders?action=2');
 			}
 		}else {
 			#fail
@@ -129,14 +129,26 @@ class User extends CI_Controller {
 			$this->session->set_userdata('goTo', false);
 			redirect($goto);
 		}else {
-			redirect('/user/home?action=2');
+			redirect('/user/orders?action=2');
 		}
 	}
 
 
 	public function isUserLoggedIn()
 	{
-		
+		if($this->session->userdata('userId') == false){
+			return false;
+		}
+		return true;
+	}
+
+	public function orders()
+	{
+		if(!$this->isUserLoggedIn()){
+			redirect('/user/login');
+		}
+		$data['orders'] = $this->user_model->getOrders($this->session->userdata('userId'));
+		$this->load->view('user/orders.php', $data);
 	}
 
 }

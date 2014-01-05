@@ -23,7 +23,7 @@
 			<li><a href="<?php echo link_url();?>admin/orders">Process Orders</a></li>
 			<li><a href="<?php echo link_url();?>admin/inventory">Inventory Management</a></li>
 			<li><a href="<?php echo link_url();?>admin/changePassword">Change Password</a></li>
-			<li><a href="<?php echo link_url();?>admin/logout">LogOut</a></li>
+			<li><a href="<?php echo link_url();?>admin/logout">Logout</a></li>
 		</ul>
 		<div class="clear"></div>
 	</div>

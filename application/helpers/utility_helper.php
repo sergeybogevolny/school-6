@@ -36,3 +36,20 @@ function getBookCategories($id=false)
 	}
 }
 
+
+function getOrderStatus($id=false)
+{
+	$status = array(
+		'1'=> 'Order accepted',
+		'2'=> 'Order processing',
+		'3'=> 'Items shipped',
+		'4'=> 'Items delivered',
+		'5'=> 'Order canceled'
+	);
+
+	if($id){
+		return $status[$id];
+	} else {
+		return $status;
+	}
+}
