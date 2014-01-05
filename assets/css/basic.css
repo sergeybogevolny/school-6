@@ -371,3 +371,11 @@ label {
 input[type="submit"]{
     margin-top: 10px;
 }
+
+.cart_count {
+    width: 10px !important;
+}
+
+.float_right {
+    float: right;
+}

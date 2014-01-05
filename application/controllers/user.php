@@ -38,6 +38,9 @@ class User extends CI_Controller {
 			case 5 :
 				$data['error'] = 'Minimum 4 character are required';
 				break;
+			case 6 :
+				$data['error'] = 'please loggin or register to continue shopping';
+				break;
 			default:
 				$data['error'] = false;
 				break;

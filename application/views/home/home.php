@@ -37,7 +37,6 @@
 
 
 			<?php foreach ($categoryList as $item) { ?>
-
 				<div class="book">
 					<div class="book_img_wrapper">
 						<table class="image_tbl">
@@ -62,7 +61,6 @@
 					</span>
 					<div class="clear"></div>
 				</div>
-
 			<?php } ?>
 
 
