@@ -10,7 +10,7 @@
 	
 <tr>
 	<th class="orderNumber">Item Id</th>
-	<th class="orderNumber">Image</th>
+	<th width="10%">Image</th>
 	<th class="customer">Title</th>
 	<th>Description</th>
 	<th>Category</th>

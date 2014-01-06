@@ -10,6 +10,10 @@ a {
     text-decoration: none;
 }
 
+a img {
+border: 0px;
+}
+
 .wrapper {
     width: 900px;
     margin-left: auto;
