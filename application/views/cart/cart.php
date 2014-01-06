@@ -40,7 +40,7 @@
 	<?php } ?>
 <?php } else { ?>
 	<tr class="total_row">
-		<td colspan="5">No items in cart</td>
+		<td colspan="6">No items in cart</td>
 	</tr>
 <?php } ?>
 
@@ -54,8 +54,15 @@
 
 
 <a class="check_out_btn" href="<?php echo site_url(); ?>">Continue shopping</a>
-
-<a class="check_out_btn float_right" href="<?php echo site_url(), '/cart/checkOut' ; ?>">Check out</a>
+<?php 
+	$disabled = 'message';
+	$url = '';
+	if($cart){
+		$disabled = '';
+		$url = site_url(). '/cart/checkOut';
+	}
+?>
+<a class="check_out_btn float_right <?php echo $disabled; ?>" href="<?php echo  $url; ?>">Check out</a>
 
 <script>
 
@@ -78,6 +85,10 @@ function changeCount(obj, item_id) {
 		"json"
 	);
 }
+
+$('.message').click(function () {
+	alert('No items in shopping cart to check out!');
+})
 
 </script>
 

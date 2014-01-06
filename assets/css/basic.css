@@ -121,20 +121,30 @@ border-top: 1px solid #D6D6D6;
     margin: 0px;
     padding: 0px;
     font-size: 16px;
+    float: left;
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
 .title_box {
     padding: 20px;
     float: left;
+    width: 350px;
+    clear: both;
+    padding-top: 5px;
 }
 
 .session_box {
     float: right;
+    width: 70px;
+    padding-top: 50px;
+    padding-right: 2px;
 }
 
 .cart_img{
     height: 15px;
     width: 15px;
+    float: right;
 }
 
 .search_box {
@@ -395,4 +405,20 @@ input[type="submit"]{
 .innerTable tr td {
     border: 0px;
 
+}
+
+.cart_items{
+    float: right;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.site_logo{
+    width: 45px;
+    float: left;
+}
+
+.admin_link {
+    float: right;
+    margin-right: 5px;
 }

@@ -142,6 +142,12 @@ class User extends CI_Controller {
 		return true;
 	}
 
+	public function logout()
+	{
+		$this->session->set_userdata('userId', false);
+		redirect('/home');
+	}
+
 	public function orders()
 	{
 		if(!$this->isUserLoggedIn()){

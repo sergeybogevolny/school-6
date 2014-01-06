@@ -1,11 +1,9 @@
 <?php $this->load->view('template/header.php'); ?>
 
 
-<h3>Manage Orders</h3>
-
+<h3 class="page_title">Your Orders</h3>
 
 <table class="cart_table order_table">
-	
 <tr>
 	<th class="orderNumber">Order number</th>
 	<th class="itemQuantity">Items &amp; quantity</th>
@@ -13,8 +11,6 @@
 	<th class="orderValue">Order value</th>
 	<th class="orderStatus">Order status</th>
 </tr>
-
-
 <?php 
 	foreach ($orders as $order) { 
 		$orderValue = 0;
