@@ -1,4 +1,11 @@
+
+<?php if(empty($isAdmin)){ ?>
+
 <?php $this->load->view('template/header.php'); ?>
+<?php } else { ?>
+<?php $this->load->view('template/admin_header.php'); ?>
+<?php } ?>
+
 
 <?php if(!empty($error)) { ?>
 <div class="error_message"><?php echo $error; ?></div>

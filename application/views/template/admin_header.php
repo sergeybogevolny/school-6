@@ -1,3 +1,7 @@
+<?php 
+
+$is_admin = $this->session->userdata('isAdmin');
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -22,7 +26,11 @@
 		<ul>
 			<li><a href="<?php echo link_url();?>admin/orders">Process Orders</a></li>
 			<li><a href="<?php echo link_url();?>admin/inventory">Inventory Management</a></li>
-			<li><a href="<?php echo link_url();?>admin/employee">Employee Management</a></li>
+
+			<?php if(!empty($is_admin)) { ?>
+				<li><a href="<?php echo link_url();?>admin/employee">Employee Management</a></li>
+			<?php } ?>
+
 			<li><a href="<?php echo link_url();?>admin/changePassword">Change Password</a></li>
 			<li><a href="<?php echo link_url();?>admin/logout">Logout</a></li>
 		</ul>

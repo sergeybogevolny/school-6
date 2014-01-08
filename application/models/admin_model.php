@@ -146,4 +146,64 @@ class Admin_model extends CI_Model {
         return true;
     }
 
+    public function getEmployee()
+    {
+        $this->load->database();
+        $sql = "SELECT * FROM admin WHERE deleted != 1 AND isAdmin != 1 ";
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows() > 0){
+           return $query->result();
+        } else {
+            return false;
+        } 
+    }
+
+
+    public function addEmployee($data)
+    {
+        $this->load->database();
+        $this->db->insert('admin', $data);
+        return $this->db->insert_id();
+    }
+
+    public function deleteEmployeeById($employeeId)
+    {
+        $employeeId = (int) $employeeId;
+        
+        $data = array(
+               'deleted' => 1
+            );
+        $this->load->database();
+        $this->db->where('id', $employeeId);
+        $this->db->update('admin', $data); 
+        return true;
+    }
+
+    public function getEmployeeById($employeeId)
+    {
+        $employeeId = (int) $employeeId;
+        $this->load->database();
+        $sql = "SELECT * FROM admin WHERE  id = '{$employeeId}' ";
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows() > 0){
+           return $query->row();
+        } else {
+            return false;
+        }
+    } 
+
+
+    public function updateEmployee($data)
+    {
+        $id = (int) $data['id'];
+        unset($data['id']);
+
+        $this->load->database();
+        $this->db->where('id', $id);
+        $this->db->update('admin', $data); 
+        return true;
+    }
+
 }

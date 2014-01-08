@@ -42,13 +42,17 @@ class admin extends CI_Controller {
 		$password = $this->admin_model->hashPassword($OathParams['password']);
 		$user = $this->admin_model->getAdminByUsername($OathParams['username']);
 
-		if( (!empty($user)) && $user->password == $password){
+		if( (!empty($user)) && $user->password == $password  && $user->deleted != 1 ){
 			# success
 			$userSessionData = array(
 			                   'adminId'  => $user->id,
 			                   'username'  => $user->username,
 			                   'adminLoggedIn' => TRUE
 			               );
+			if($user->isAdmin == 1){
+				$userSessionData['isAdmin'] = true;
+			}
+			
 			$this->session->set_userdata($userSessionData);
 			redirect('/admin/home?action=2');
 		}else {
@@ -263,7 +267,7 @@ class admin extends CI_Controller {
 	public function deleteInventory()
 	{
 		$itemId = $this->input->get('id');
-		$data['item'] = $this->admin_model->deleteInventoryById($itemId);
+		$this->admin_model->deleteInventoryById($itemId);
 		redirect('/admin/inventory?action=2');
 	}
 
@@ -278,30 +282,80 @@ class admin extends CI_Controller {
 				$data['error'] = false;
 				$data['success'] = 'employee data deleted';
 				break;
+			case 3:
+				$data['error'] = false;
+				$data['success'] = 'employee added';
+				break;
 			default:
 				$data['success'] = false;
 				$data['error'] = false;
 				break;
 		}
 		
-		$data['employees'] = $this->admin_model->employee();
+		$data['employees'] = $this->admin_model->getEmployee();
 		$this->load->view('admin/employee.php', $data);
 	}
 
 
+
 	public function addEmployee()
 	{
-		# code...
+		$this->isLoggedIn();
+		$this->load->helper(array('form'));
+
+		switch ((int) $this->input->get('action')) {
+			case 1:
+				$data['error'] = 'All fields are required!';
+				break;
+			default:
+				$data['success'] = false;
+				$data['error'] = false;
+				break;
+		}
+		$this->load->view('admin/addEmployee.php', $data);
+	}
+
+
+	public function saveEmployee()
+	{
+		$this->isLoggedIn();
+		$employee = $this->input->post();
+		if(empty($employee['name']) || empty($employee['username']) || empty($employee['password'])){
+			redirect('/admin/addEmployee?action=1');
+		}
+		$employee['password'] = $this->admin_model->hashPassword($employee['password']);
+		$this->admin_model->addEmployee($employee);
+		redirect('/admin/employee?action=3');
 	}
 
 	public function deleteEmployee()
 	{
-		# code...
+		$employeeId = $this->input->get('id');
+		$this->admin_model->deleteEmployeeById($employeeId);
+		redirect('/admin/employee?action=2');
 	}
-	
-	public function editInventory()
+
+	public function editEmployee()
 	{
-		# code...
+		$this->load->helper(array('form'));
+
+		$employeeId = $this->input->get('id');
+		$data['employee'] = $this->admin_model->getEmployeeById($employeeId);
+		
+		$post = $this->input->post();
+		if(!empty($post['name'])){
+
+			if(empty($post['password']) && isset($post['password'])){
+				unset($post['password']);
+			} else {
+				$post['password'] = $this->admin_model->hashPassword($post['password']);
+			}
+
+			$this->admin_model->updateEmployee($post);
+			redirect('/admin/employee?action=1');
+		}
+
+		$this->load->view('admin/addEmployee.php', $data);
 	}
 }
 

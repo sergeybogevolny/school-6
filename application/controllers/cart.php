@@ -118,12 +118,13 @@ class cart extends CI_Controller {
 	public function invoice()
 	{
 		$orderId = (int) $this->input->get('id');
-		if(!$this->_isLoggedIn()){
+		$data['isAdmin'] = $this->input->get('admin');
+
+		if( !$this->_isLoggedIn() && !$data['isAdmin'] ){
 			$this->session->set_userdata('goTo', '/cart/invoice?id='.$orderId);
 			redirect('/user/login?action=6');
 		}
-
-		$data['isAdmin'] = $this->input->get('admin');
+		
 		$data['order'] = $this->cart_model->getOrder($orderId);
 		$data['customer'] = $this->cart_model->getCustomer($data['order']['order']->user_id);
 		$this->load->view('/cart/invoice', $data);

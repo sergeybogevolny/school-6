@@ -18,27 +18,20 @@
 <tr>
 	<th class="orderNumber">Delete</th>
 	<th class="orderNumber">Edit</th>
-	<th class="orderNumber">Item Id</th>
-	<th width="10%">Image</th>
-	<th class="customer">Title</th>
-	<th>Description</th>
-	<th>Category</th>
-	<th class="orderValue">Unit price</th>
-	<th>Stock</th>
+	<th class="orderNumber">Employee Id</th>
+	<th class="customer">Name</th>
+	<th class="customer">Username</th>
 </tr>
 
-<?php if(!empty($inventory)){ ?>
-	<?php foreach ($inventory as $item) { ?>
+<?php if(!empty($employees)){ ?>
+	<?php foreach ($employees as $employee) { ?>
 		<tr>
-			<td><a href="<?php echo link_url(), 'admin/deleteEmployee?id=', $item->item_id; ?>" onclick="javascript:return confirm('Are you sure you want to delete?');" >Delete</a></td>
-			<td><a href="<?php echo link_url(), 'admin/editInventory?id=', $item->item_id; ?>">Edit</a></td>
-			<td valign="middle" align="center" ><?php echo $item->item_id; ?></td>
-			<td><img src="<?php echo base_url().$item->image; ?>" /></td>
-			<td><?php echo $item->title; ?></td>
-			<td><?php echo substr($item->description,0,200); ?></td>
-			<td><?php echo getBookCategories($item->category); ?></td>
-			<td align="center" >Rs. <?php echo $item->price; ?></td>
-			<td align="center" ><?php echo $item->stock; ?></td>
+			<td><a href="<?php echo link_url(), 'admin/deleteEmployee?id=', $employee->id; ?>" onclick="javascript:return confirm('Are you sure you want to delete?');" >Delete</a></td>
+			<td><a href="<?php echo link_url(), 'admin/editEmployee?id=', $employee->id; ?>">Edit</a></td>
+			<td valign="middle" align="center" ><?php echo $employee->id; ?></td>
+			
+			<td><?php echo $employee->name; ?></td>
+			<td><?php echo $employee->username; ?></td>
 		</tr>
 	<?php } ?>
 <?php } ?>
