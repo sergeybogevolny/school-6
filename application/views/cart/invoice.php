@@ -14,7 +14,7 @@
 <?php if(empty($isAdmin)){ ?>
 <h2 class="page_title">You order is confirmed, thank you for shopping with us.</h2>
 <?php } ?>
-<h3>Order Reference Number: #ORN-<?php echo $order['order']->order_id; ?></h3>
+<h3>Order Reference Number: ORN-<?php echo $order['order']->order_id; ?></h3>
 
 <div class="Address_1">
 	<h3>Shipping address:</h3>

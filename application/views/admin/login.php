@@ -20,4 +20,14 @@
 	</form>
 </div>
 
+<p>
+	admin username: admin<br/>
+	admin password: admin1
+
+	<br/><br/>
+	employee username : jony<br/>
+	employee password : jony
+</p>
+
+
 <?php $this->load->view('template/footer.php'); ?>

@@ -1,7 +1,7 @@
 </div>
 	
 	<div class="footer_wrapper">
-		asd 
+		Project by jayasankar 511121985
 	</div>
 
 </div>

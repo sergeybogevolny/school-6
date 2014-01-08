@@ -21,6 +21,12 @@
 	</form>
 </div>
 <?php //} if($form != 1) { ?>
+
+<p>
+	demo username: saji<br />
+		password : saji
+</p>
+
 <h2>SignUp</h2>
 
 

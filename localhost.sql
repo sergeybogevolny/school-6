@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 08, 2014 at 07:11 PM
+-- Generation Time: Jan 08, 2014 at 07:37 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -69,9 +69,9 @@ CREATE TABLE IF NOT EXISTS `inventory` (
 --
 
 INSERT INTO `inventory` (`item_id`, `title`, `description`, `price`, `image`, `stock`, `category`, `deleted`) VALUES
-(1, 'The Games people play', 'Games People Play: The Psychology of Human Relationships is a bestselling 1964 book by psychiatrist Eric Berne. Since its publication it has sold more than five million copies', 100, 'assets/uploads/books/1388597217.jpg', 0, 1, 1),
-(2, 'Transactional Analysis in Psychotherapy by Eric Berne (the Author of Games People Play)', 'Transactional Analysis in Psychotherapy by Eric Berne "An important book . . . a brilliant, amusing, and clear catalogue of the psychological theatricals that human beings play over and over again."\nDr. Eric Berne, as the originator of transactional analysis, has attained recognition for developing one of the most innovative approaches to modern psychotherapy. Discover how many of these "secret games" you play everyday of your life: Iwfy (If it weren''t for you); Sweetheart; Threadbare; Harried; Alcoholic, and many more. A groundbreaking book that bores deep into the heart of all our relationships.', 180, 'assets/uploads/books/1388597426.jpeg', 7, 1, 1),
-(3, 'Compilers : Principles, Techniques, & Tools 2 Edition (Paperback) ', 'Introduction\nA Simple Syntax-Directed Translator\nLexical Analysis\nSyntax Analysis\nSyntax-Directed Translation\nIntermediate-Code Generation\nRun-Time Environments\nCode Generation\nMachine-Independent Optimizations\nInstruction-Level Parallelism\nOptimizing for Parallelism and Locality\nInter-procedural Analysis\nA. A Complete Front End\nB. Finding Linearly Independent Solutions\nIndex', 621, 'assets/uploads/books/1388599971.jpeg', 9, 1, 0),
+(1, 'The Games people play', 'Games People Play: The Psychology of Human Relationships is a bestselling 1964 book by psychiatrist Eric Berne. Since its publication it has sold more than five million copies', 100, 'assets/uploads/books/1388597217.jpg', 0, 1, 0),
+(2, 'Transactional Analysis in Psychotherapy by Eric Berne (the Author of Games People Play)', 'Transactional Analysis in Psychotherapy by Eric Berne "An important book . . . a brilliant, amusing, and clear catalogue of the psychological theatricals that human beings play over and over again."\nDr. Eric Berne, as the originator of transactional analysis, has attained recognition for developing one of the most innovative approaches to modern psychotherapy. Discover how many of these "secret games" you play everyday of your life: Iwfy (If it weren''t for you); Sweetheart; Threadbare; Harried; Alcoholic, and many more. A groundbreaking book that bores deep into the heart of all our relationships.', 180, 'assets/uploads/books/1388597426.jpeg', 7, 1, 0),
+(3, 'Compilers : Principles, Techniques, & Tools 2 Edition (Paperback) ', 'Introduction\nA Simple Syntax-Directed Translator\nLexical Analysis\nSyntax Analysis\nSyntax-Directed Translation\nIntermediate-Code Generation\nRun-Time Environments\nCode Generation\nMachine-Independent Optimizations\nInstruction-Level Parallelism\nOptimizing for Parallelism and Locality\nInter-procedural Analysis\nA. A Complete Front End\nB. Finding Linearly Independent Solutions\nIndex', 621, 'assets/uploads/books/1388599971.jpeg', 7, 1, 0),
 (4, 'SCJP Sun Certified Programmer for Java 6 Study Exam 310-065 Guide (With CD-ROM) 1st Edition', 'SCJP Sun Certified Programmer For Java 6 Study Exam 310-065 Guide, is preparation text filled with practice questions and practical exercises, as well as preparation techniques, which will help students succeed in their SCJP exams.\n\n\n\nSummary Of The Book\n\nSCJP Sun Certified Programmer For Java 6 Study Exam 310-065 Guide, contains a thorough coverage of all the objectives for exam 310-065. Each chapter lists the title Objective Highlights, which highlight certification objectives to help students focus on the material and succeed on the exam. Exam Watch sections are also included in each chapter which covers important exam topics. The authors have also included simulated exam questions which are similar in tone, style, format, and difficulty level to the real exam.\n\nSCJP Sun Certified Programmer For Java 6 Study Exam 310-065 Guide, covers topics such as Declarations, Access Control, Object Orientation, Operators, Flow Control, Exceptions, Assignments, Assertions, Generics/Collections, Threads, Inner Classes, and Development.\n\nThe text also comes equipped with a CD-ROM which contains a Master Exam testing engine. This includes two complete practice exams, answers with details and explanations, and a Score Report performance/assessment tool. Also included, is a bonus coverage on the SCJD exam. Students can also register online for free.\nSCJP Sun Certified Programmer For Java 6 Study Exam 310-065 Guide, was published in 2008, by Tata McGraw-Hill Education.', 480, 'assets/uploads/books/1388600422.jpeg', 15, 1, 0),
 (5, 'Gandhi Before India', 'There have been a lot of books written on Gandhi. On his life, but mostly on the non-violence movement started by him. We have also read a lot on the Mahatma in school and college perhaps and yet there is very little we know about him as a person. Ramachandra Guha takes on a territory which he is most comfortable. He traces the life of Mohandas Karamchand Gandhi before he became the Mahatma in his new book, Gandhi before India.\n\nGandhi before India lets readers into the Gandhi that probably very few people knew of. The book focuses mainly on Gandhis early years in London and South Africa and how they shaped his ideologies and philosophy. The writing is stark and uncomplicated. It may not compel you to turn the pages, however it does give you space to mull and ponder between chapters about Gandhi and the great soul he ultimately turned out to be. A must read for all history and non history buffs.', 515, 'assets/uploads/books/1388601499.jpeg', 12, 2, 0),
 (6, 'My Journey : Transforming Dreams into Actions', 'Dr. APJ Abdul Kalams life has been an interesting one. From being born in a small village to becoming a doctor, to the countrys President, his journey literally has been intriguing and worth knowing about. In his new book, My Journey, Dr. Kalam takes us through his life and his inspiration, from when he was a child to date. This only should prompt you to read this book, besides other things.\n\nMy Journey is an honest take on life and aspirations and how to get to achieving it all. It speaks of a mans humble beginnings and how he still remains grounded after all these years. The writing is as simple as you can think of, which is the highlight of the book it can be read by anyone. All said and done, My Journey will have you believe more in yourself and your capabilities.', 115, 'assets/uploads/books/1388601552.jpeg', 3, 2, 0),
@@ -94,18 +94,19 @@ CREATE TABLE IF NOT EXISTS `order` (
   `user_id` int(11) NOT NULL,
   `status` enum('Order accepted','Order processing','Items shipped','Items delivered','Order canceled') NOT NULL,
   PRIMARY KEY (`order_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `order`
 --
 
 INSERT INTO `order` (`order_id`, `date`, `user_id`, `status`) VALUES
-(23, '2014-01-06 12:20:05', 2, 'Order accepted'),
-(24, '2014-01-06 12:20:26', 2, 'Order accepted'),
+(23, '2014-01-06 12:20:05', 2, 'Order canceled'),
+(24, '2014-01-06 12:20:26', 2, 'Items shipped'),
 (25, '2014-01-06 12:20:39', 2, 'Items delivered'),
 (26, '2014-01-06 12:22:20', 2, 'Order processing'),
-(27, '2014-01-06 11:00:33', 2, 'Order accepted');
+(27, '2014-01-06 11:00:33', 2, 'Order processing'),
+(28, '2014-01-09 12:01:02', 2, 'Order accepted');
 
 -- --------------------------------------------------------
 
@@ -119,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `order_item` (
   `item_id` int(11) NOT NULL,
   `unit` decimal(10,0) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=66 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=67 ;
 
 --
 -- Dumping data for table `order_item`
@@ -133,7 +134,8 @@ INSERT INTO `order_item` (`id`, `order_id`, `item_id`, `unit`) VALUES
 (62, 25, 1, 1),
 (63, 26, 2, 1),
 (64, 27, 2, 2),
-(65, 27, 3, 1);
+(65, 27, 3, 1),
+(66, 28, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -161,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `full_name`, `country`, `state`, `city`, `address`, `phone`, `email`) VALUES
 (1, 'vishnu', 'd501ef86a1b5c72bb35dc995ab506207', 'vishnu', 'India', 'Kerala', 'Kochi', 'Sample addrress', '09342432333', 'vishnu@example.com'),
-(2, 'saji', 'd501ef86a1b5c72bb35dc995ab506207', 'saji', 'India', 'Kerala', 'saji', 'saji', 'saji', 'saji');
+(2, 'saji', 'd501ef86a1b5c72bb35dc995ab506207', 'Saji Kumar', 'India', 'Kerala', 'kadavanthra Kochi', 'Flat 10A example flat', '91900000000', 'saji@example.com');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

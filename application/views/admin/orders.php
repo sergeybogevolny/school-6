@@ -21,19 +21,18 @@
 		$orderValue = 0;
 ?>
 <tr>
-	<td valign="middle" align="center" >#ORN-<?php echo $order->order_id; ?></td>
+	<td valign="middle" align="center" >ORN-<?php echo $order->order_id; ?></td>
 	<td>
 
-		<table width="100%" class="innerTable">
 		<?php foreach ($order->items as $k => $item) { ?>
-			<tr>
-				<td width="3%">&bull;</td>
-				<td><?php echo substr($item->title, 0, 50); ?> </td>
-				<td width="18%">: <?php echo $item->unit; ?> x <?php echo $item->price; ?></td>
-			</tr>
-			<?php $orderValue += $item->unit * $item->price; ?>
+			
+				<?php echo substr($item->title, 0, 45); ?>
+				<?php if(strlen($item->title) > 45){ echo '...'; } ?>
+
+				 : &nbsp;&nbsp;
+				<?php echo $item->unit; ?> x Rs.<?php echo $item->price; ?>
+				<?php $orderValue += $item->unit * $item->price; ?> <br/>
 		<?php } ?>
-		</table>
 	 </td>
 	<td><?php echo $order->full_name; ?><br/>
 		<?php echo $order->address; ?>,
