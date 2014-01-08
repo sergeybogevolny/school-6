@@ -8,9 +8,9 @@
 <div class="success_message"><?php echo $success; ?></div>
 <?php } ?>
 
-<h3 class="floatLeft">Manage Inventory</h3>
+<h3 class="floatLeft">Manage Employee</h3>
 
-<a href="<?php echo link_url(); ?>admin/addInventory" class="addInventoryBtn floatRight" >Add Books</a>
+<a href="<?php echo link_url(); ?>admin/addEmployee" class="addInventoryBtn floatRight" >Add employee</a>
 <div class="clear"></div>
 
 <table class="cart_table order_table">
@@ -30,7 +30,7 @@
 <?php if(!empty($inventory)){ ?>
 	<?php foreach ($inventory as $item) { ?>
 		<tr>
-			<td><a href="<?php echo link_url(), 'admin/deleteInventory?id=', $item->item_id; ?>" onclick="javascript:return confirm('Are you sure you want to delete?');" >Delete</a></td>
+			<td><a href="<?php echo link_url(), 'admin/deleteEmployee?id=', $item->item_id; ?>" onclick="javascript:return confirm('Are you sure you want to delete?');" >Delete</a></td>
 			<td><a href="<?php echo link_url(), 'admin/editInventory?id=', $item->item_id; ?>">Edit</a></td>
 			<td valign="middle" align="center" ><?php echo $item->item_id; ?></td>
 			<td><img src="<?php echo base_url().$item->image; ?>" /></td>

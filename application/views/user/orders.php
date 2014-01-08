@@ -10,36 +10,37 @@
 	<th class="customer">Customer</th>
 	<th class="orderValue">Order value</th>
 	<th class="orderStatus">Order status</th>
+	<th>Order details</th>
 </tr>
 <?php 
 	foreach ($orders as $order) { 
 		$orderValue = 0;
 ?>
 <tr>
-	<td valign="middle" align="center" >#ORN-<?php echo $order->order_id; ?></td>
+	<td valign="middle" align="center" >ORN-<?php echo $order->order_id; ?></td>
 	<td>
 
-		<table width="100%" class="innerTable">
+		
 		<?php foreach ($order->items as $k => $item) { ?>
-			<tr>
-				<td width="3%">&bull;</td>
-				<td><?php echo substr($item->title, 0, 50); ?> </td>
-				<td width="18%">: <?php echo $item->unit; ?> x <?php echo $item->price; ?></td>
-			</tr>
-			<?php $orderValue += $item->unit * $item->price; ?>
+			
+				<?php echo substr($item->title, 0, 50); ?> : &nbsp;&nbsp;
+				<?php echo $item->unit; ?> x Rs.<?php echo $item->price; ?>
+				<?php $orderValue += $item->unit * $item->price; ?> <br/>
 		<?php } ?>
-		</table>
+		
 	 </td>
-	<td><?php echo $order->full_name; ?><br/>
+	<td>
+		<strong><?php echo $order->full_name; ?></strong><br/>
 		<?php echo $order->address; ?>,
 		<?php echo $order->city; ?>,
 		<?php echo $order->state; ?>,
-		<?php echo $order->country; ?>,
+		<?php echo $order->country; ?>,<br/>
 		Phone: <?php echo $order->phone; ?>,
 		Email: <?php echo $order->email; ?>
 	</td>
 	<td align="center" >Rs. <?php echo $orderValue; ?></td>
 	<td align="center" ><?php echo $order->status ; ?></td>
+	<td align="center" ><a href="<?php echo link_url(), 'cart/invoice?id=', $order->order_id?>">View</a></td>
 </tr>
 <?php } ?>
 

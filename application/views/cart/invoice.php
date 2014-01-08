@@ -4,9 +4,9 @@
 <div class="error_message"><?php echo $error; ?></div>
 <?php } ?>
 
-
-<h2 class="page_title">You order is confirmed and items will be shipped soon, thank you for shopping with us.</h2>
-
+<?php if(empty($isAdmin)){ ?>
+<h2 class="page_title">You order is confirmed, thank you for shopping with us.</h2>
+<?php } ?>
 <h3>Order Reference Number: #ORN-<?php echo $order['order']->order_id; ?></h3>
 
 <div class="Address_1">

@@ -12,6 +12,7 @@
 	<th class="customer">Customer</th>
 	<th class="orderValue">Order value</th>
 	<th class="orderStatus">Order status</th>
+	<th >Order details</th>
 </tr>
 
 
@@ -51,6 +52,7 @@
 			<?php } ?>
 		</select>
 	</td>
+	<td align="center" ><a href="<?php echo link_url(), 'cart/invoice?admin=1&id=', $order->order_id; ?>">View</a></td>
 </tr>
 <?php } ?>
 

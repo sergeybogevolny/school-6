@@ -123,7 +123,7 @@ class cart extends CI_Controller {
 			redirect('/user/login?action=6');
 		}
 
-		
+		$data['isAdmin'] = $this->input->get('admin');
 		$data['order'] = $this->cart_model->getOrder($orderId);
 		$data['customer'] = $this->cart_model->getCustomer($data['order']['order']->user_id);
 		$this->load->view('/cart/invoice', $data);

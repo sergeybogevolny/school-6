@@ -72,7 +72,7 @@ class Admin_model extends CI_Model {
     public function getInventory()
     {
         $this->load->database();
-        $sql = "SELECT * FROM inventory";
+        $sql = "SELECT * FROM inventory WHERE deleted != 1 ";
         $query = $this->db->query($sql);
 
         if ($query->num_rows() > 0){
@@ -106,6 +106,44 @@ class Admin_model extends CI_Model {
         $data = array('status' => getOrderStatus($status));
         $this->db->where('order_id', $orderId);
         $this->db->update('order', $data);
+    }
+
+    public function getInventoryById($id)
+    {
+        $id = (int) $id;
+        $this->load->database();
+        $sql = "SELECT * FROM inventory WHERE  item_id = '{$id}' ";
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows() > 0){
+           return $query->row();
+        } else {
+            return false;
+        } 
+    }
+
+    public function updateInventory($data)
+    {
+        $item_id = (int) $data['item_id'];
+        unset($data['item_id']);
+
+        $this->load->database();
+        $this->db->where('item_id', $item_id);
+        $this->db->update('inventory', $data); 
+        return true;
+    }
+
+    public function deleteInventoryById($itemId)
+    {
+        $item_id = (int) $itemId;
+        
+        $data = array(
+               'deleted' => 1
+            );
+        $this->load->database();
+        $this->db->where('item_id', $item_id);
+        $this->db->update('inventory', $data); 
+        return true;
     }
 
 }

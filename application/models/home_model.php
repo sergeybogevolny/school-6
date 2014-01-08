@@ -14,7 +14,7 @@ class Home_model extends CI_Model {
         $this->load->database();
 
         foreach (getBookCategories() as $categoryId => $category) {
-            $sql = "SELECT * FROM inventory WHERE category = {$categoryId} LIMIT 4";
+            $sql = "SELECT * FROM inventory WHERE category = {$categoryId} AND deleted != 1  LIMIT 4";
             $query = $this->db->query($sql);
             if ($query->num_rows() > 0){
                $list[$categoryId] = $query->result();
@@ -27,6 +27,8 @@ class Home_model extends CI_Model {
     public function getBooks($filters)
     {
         $this->load->database();
+
+        $where[] = " deleted != 1 ";
 
         if(!empty($filters['search'])){
             $search = $this->db->escape_like_str($filters['search']);

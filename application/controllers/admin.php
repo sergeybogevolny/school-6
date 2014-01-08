@@ -85,6 +85,21 @@ class admin extends CI_Controller {
 	{
 		$this->isLoggedIn();
 		$data['inventory'] = $this->admin_model->getInventory();
+		
+		switch ((int) $this->input->get('action')) {
+			case 1:
+				$data['error'] = false;
+				$data['success'] = 'Item updated in inventory';
+				break;
+			case 2:
+				$data['error'] = false;
+				$data['success'] = 'Item deleted from inventory';
+				break;
+			default:
+				$data['success'] = false;
+				$data['error'] = false;
+				break;
+		}
 		$this->load->view('admin/inventory.php', $data);
 	}
 
@@ -227,6 +242,66 @@ class admin extends CI_Controller {
 
 		$this->admin_model->updateOrderStatus($orderId, $status);
 		exit(json_encode(array('status' => 'ok')));
+	}
+
+	public function editInventory()
+	{
+		$this->load->helper(array('form'));
+
+		$itemId = $this->input->get('id');
+		$data['item'] = $this->admin_model->getInventoryById($itemId);
+		
+		$post = $this->input->post();
+		if(!empty($post['title'])){
+			$this->admin_model->updateInventory($post);
+			redirect('/admin/inventory?action=1');
+		}
+
+		$this->load->view('admin/addInventory.php', $data);
+	}
+
+	public function deleteInventory()
+	{
+		$itemId = $this->input->get('id');
+		$data['item'] = $this->admin_model->deleteInventoryById($itemId);
+		redirect('/admin/inventory?action=2');
+	}
+
+	public function employee()
+	{
+		switch ((int) $this->input->get('action')) {
+			case 1:
+				$data['error'] = false;
+				$data['success'] = 'employee data updated';
+				break;
+			case 2:
+				$data['error'] = false;
+				$data['success'] = 'employee data deleted';
+				break;
+			default:
+				$data['success'] = false;
+				$data['error'] = false;
+				break;
+		}
+		
+		$data['employees'] = $this->admin_model->employee();
+		$this->load->view('admin/employee.php', $data);
+	}
+
+
+	public function addEmployee()
+	{
+		# code...
+	}
+
+	public function deleteEmployee()
+	{
+		# code...
+	}
+	
+	public function editInventory()
+	{
+		# code...
 	}
 }
 
