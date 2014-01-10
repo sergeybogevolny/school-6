@@ -64,5 +64,5 @@ if(!empty($list)){
 		<?php } ?>
 	<?php } ?>
 <?php } ?>
-
+<div class="clear"></div>
 <?php $this->load->view('template/footer.php'); ?>
